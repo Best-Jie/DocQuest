@@ -1,0 +1,15 @@
+dataset path:/home/cjy/DocQuest/DocQuest/data/LongDocURL/sample-with-retrieval-results.json
+/home/cjy/DocQuest/DocQuest/results/LongDocURL/ldu_gpt
+Json file not found at /home/cjy/DocQuest/DocQuest/results/LongDocURL/ldu_gpt
+Traceback (most recent call last):
+  File "/home/cjy/DocQuest/DocQuest/scripts/predict_doc_quest.py", line 26, in <module>
+    main(toml_cfg_path="config/doc_quest_config.toml")
+  File "/home/cjy/DocQuest/DocQuest/scripts/predict_doc_quest.py", line 21, in main
+    docQuestAgents.predict_dataset(dataset, resume=True)
+  File "/home/cjy/DocQuest/DocQuest/agents/doc_quest.py", line 589, in predict_dataset
+    samples, _ = dataset.load_latest_results()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cjy/DocQuest/DocQuest/mydatasets/BaseDataset.py", line 135, in load_latest_results
+    assert isinstance(path, str)
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError
