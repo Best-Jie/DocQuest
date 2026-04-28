@@ -1,0 +1,44 @@
+[run_args]
+run_name = "tri_map"
+work_dir = "."
+sample_select_num = 1000
+
+[retrieval]
+top_k = 10
+text_question_key = "question"
+image_question_key = "question"
+r_text_key = "text-top-{retrieval.top_k}-{retrieval.text_question_key}"
+r_image_key = "image-top-{retrieval.top_k}-{retrieval.image_question_key}"
+
+[dataset]
+name = ""
+top_k = 3
+question_key = "question"
+gt_key = "answer"
+page_id_key = "page_ids"
+max_page = 1000
+max_character_per_page = 100000
+use_mix = false
+
+r_text_key = "{retrieval.r_text_key}"
+r_image_key = "{retrieval.r_image_key}"
+
+data_dir = "{run_args.work_dir}/data/{dataset.name}"
+result_dir = "{run_args.work_dir}/results/{dataset.name}/{run_args.run_name}"
+extract_path = "{run_args.work_dir}/tmp/{dataset.name}"
+document_path = "{run_args.work_dir}/data/{dataset.name}/documents"
+sample_path = "{dataset.data_dir}/samples.json"
+sample_with_retrieval_path = "{dataset.data_dir}/sample-with-retrieval-results.json"
+summary_path = "{run_args.work_dir}/tmp/summary/{dataset.name}"
+index_path = "{run_args.work_dir}/tmp/index/{dataset.name}"
+pdffigure2_extract_path = "{run_args.work_dir}/tmp/pdffigure2/{dataset.name}"
+pdffigure2_path = "{run_args.work_dir}/mydatasets/pdffigures2"
+sqlite_path = "{run_args.work_dir}/data/fileObjects.db"
+
+[tri_map.parser]
+backend = "mineru"
+
+[tri_map.mineru]
+output_root = "/new-data/new-ywj/tool_outputs/mineru"
+copy_visual_assets = true
+ignored_types = ["aside_text", "page_aside_text", "page_footnote", "page_header", "page_footer", "page_number"]
